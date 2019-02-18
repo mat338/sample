@@ -1,6 +1,0 @@
-copy /b "ì‹Æ“ú•ñ.0"  "ì‹Æ“ú•ñ.zip"
-copy /b "ì‹Æ“ú•ñ.zip" + "ì‹Æ“ú•ñ.1"  "ì‹Æ“ú•ñ.zip"
-copy /b "ì‹Æ“ú•ñ.zip" + "ì‹Æ“ú•ñ.2"  "ì‹Æ“ú•ñ.zip"
-copy /b "ì‹Æ“ú•ñ.zip" + "ì‹Æ“ú•ñ.3"  "ì‹Æ“ú•ñ.zip"
-copy /b "ì‹Æ“ú•ñ.zip" + "ì‹Æ“ú•ñ.4"  "ì‹Æ“ú•ñ.zip"
-copy /b "ì‹Æ“ú•ñ.zip" + "ì‹Æ“ú•ñ.5"  "ì‹Æ“ú•ñ.zip"
