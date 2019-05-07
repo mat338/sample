@@ -1,0 +1,1 @@
+https://dev.classmethod.jp/cloud/aws/dynamodb-semaphore-simultaneous-access/
