@@ -1,1 +1,67 @@
 https://dev.classmethod.jp/cloud/aws/dynamodb-semaphore-simultaneous-access/
+
+; =======================================================
+; connect to internal hosts via bastion (TeraTerm Macro)
+; =======================================================
+
+; 手順1：同じフォルダに踏み台の秘密鍵を置いて当マクロの変数BASTION_USERとBASTION_KEYを書き換える。
+; 手順2：同じフォルダに「bastion-template.ini」という名前でTERATERM.INIのコピーを置く。
+; 手順3：「bastion-template.ini」の[TTSSH]のDefaultForwardingの値を「__BASTION_REPLACE__」にする。
+; 手順4：当マクロを実行する（接続先ホスト、接続先ポート、ローカルポートを入力する）。
+; 上記により適当なツールでlocalhostのローカルポートに接続するとSSH転送される。
+
+;; マクロのディレクトリ
+getdir MACRO_DIR
+
+;; 踏み台情報（個人ごとに変更）
+BASTION_HOST = 'bastion.dev.mycompany.info'
+BASTION_PORT = '22'
+BASTION_USER = 'tarou_yamada'
+sprintf2 BASTION_KEY '%s\%s' MACRO_DIR 'tarou.yamada'
+
+;; 接続先情報
+inputbox '接続先ホスト' '接続先情報'
+TARGET_HOST = inputstr
+inputbox '接続先ポート' '接続先情報'
+TARGET_PORT = inputstr
+inputbox 'ローカルポート' '接続先情報'
+TARGET_LOCAL_PORT = inputstr
+
+;; 置換対象）DefaultForwarding=__BASTION_REPLACE__
+;; 例）L2222:aaa:23;L12222:xxx:22
+TRAGET_STR = 'L'
+strconcat TRAGET_STR TARGET_LOCAL_PORT
+strconcat TRAGET_STR ':'
+strconcat TRAGET_STR TARGET_HOST
+strconcat TRAGET_STR ':'
+strconcat TRAGET_STR TARGET_PORT
+
+;; 専用INIファイル
+INI_TEMPLATE_FILE = 'bastion-template.ini'
+sprintf2 INI_FILE '%s\%s' MACRO_DIR 'bastion.ini'
+
+;; 設定ファイル書き出し
+fileopen FH0 INI_TEMPLATE_FILE 0
+fileopen FH1 INI_FILE 0
+while 1
+  filereadln FH0 LINE
+  if result = 1 then
+    break
+  endif
+  strreplace LINE 1 '__BASTION_REPLACE__' TRAGET_STR
+  filewriteln FH1 LINE
+endwhile
+fileclose FH1
+fileclose FH0
+
+;; 踏み台接続
+COMMAND = BASTION_HOST
+strconcat COMMAND ':'
+strconcat COMMAND BASTION_PORT
+strconcat COMMAND ' /ssh 2 /auth=publickey /user='
+strconcat COMMAND BASTION_USER
+strconcat COMMAND ' /keyfile='
+strconcat COMMAND BASTION_KEY
+strconcat COMMAND ' /F='
+strconcat COMMAND INI_FILE
+connect COMMAND
