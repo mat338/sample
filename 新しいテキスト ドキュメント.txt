@@ -65,3 +65,25 @@ strconcat COMMAND BASTION_KEY
 strconcat COMMAND ' /F='
 strconcat COMMAND INI_FILE
 connect COMMAND
+
+
+#==============================================
+# EC2インスタンスの起動時に自動インストール
+# https://github.com/sakamaki-kazuyoshi/DockerOnEC2/blob/master/DockerOnEC2.yml
+#==============================================
+    Metadata:
+      Comment: Install a simple PHP application
+      AWS::CloudFormation::Init:  # 起動スクリプトの設定
+        config:
+          packages:  # 利用するパッケージ、今回はyumでapacheとphpをインストール
+            yum:
+              httpd: []
+              php: []
+
+  Docker:
+    Fn::Base64: |
+      #!/bin/bash 
+      yum update -y
+      yum install -y docker
+      systemctl enable docker
+      service docker start
