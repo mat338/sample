@@ -87,3 +87,5 @@ connect COMMAND
       yum install -y docker
       systemctl enable docker
       service docker start
+
+http://s-edword.hatenablog.com/entry/2018/09/13/074036
