@@ -91,3 +91,7 @@ connect COMMAND
 http://s-edword.hatenablog.com/entry/2018/09/13/074036
 https://qiita.com/mekemo_dao/items/1be234f72a521fc87f27
 https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html#EC2.Client.describe_instances
+
+・ec2 s3 マウント goofys
+https://qiita.com/adachi_you/items/459cbc56e83089bdc7f9
+https://go-journey.club/archives/9653
