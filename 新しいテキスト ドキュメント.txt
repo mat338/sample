@@ -116,3 +116,7 @@ sudo make prefix=/usr/local install
 
 ・S3　セキュリティ
 https://dev.classmethod.jp/cloud/aws/s3-access-from-specific-ip-and-vpc/
+
+
+・Lambda-run command ec2-user
+runuser -l ec2-user -c "aws ec2 describe-instance-status"
