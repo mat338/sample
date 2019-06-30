@@ -120,3 +120,6 @@ https://dev.classmethod.jp/cloud/aws/s3-access-from-specific-ip-and-vpc/
 
 ・Lambda-run command ec2-user
 runuser -l ec2-user -c "aws ec2 describe-instance-status"
+
+・Linux ポートの枯渇
+https://kb.tableau.com/articles/issue/tableau-server-port-exhaustion-problems?lang=ja-jp
