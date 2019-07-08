@@ -123,3 +123,5 @@ runuser -l ec2-user -c "aws ec2 describe-instance-status"
 
 ・Linux ポートの枯渇
 https://kb.tableau.com/articles/issue/tableau-server-port-exhaustion-problems?lang=ja-jp
+
+トレーディング・ポスト（Trading Post）
