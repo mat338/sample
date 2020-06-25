@@ -125,3 +125,5 @@ runuser -l ec2-user -c "aws ec2 describe-instance-status"
 https://kb.tableau.com/articles/issue/tableau-server-port-exhaustion-problems?lang=ja-jp
 
 トレーディング・ポスト（Trading Post）
+
+https://qiita.com/rgbkids/items/8ec309d1bf5e203d2b19
