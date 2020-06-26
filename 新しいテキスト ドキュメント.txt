@@ -136,3 +136,5 @@ https://qiita.com/rgbkids/items/8ec309d1bf5e203d2b19
 
 ÅEDrag and Drop API
 https://www.atmarkit.co.jp/ait/articles/1112/16/news135.html
+
+http://www.it-view.net/drag-and-drop-file-upload-jquery-178.html
