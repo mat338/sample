@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+
+
+<script type="text/javascript">
+  // 前サンプル同様のFile API実装チェック（省略）
+
+  // Drop領域にドロップした際のファイルのプロパティ情報読み取り処理
+  function onDrop(event) {
+    var files = event.dataTransfer.files;
+    var disp = document.getElementById("disp");
+    disp.innerHTML ="";
+
+    // ファイルの配列から1つずつファイルを選択
+    for (var i=0; i< files.length; i++) {
+      var f = files[i];
+      // （1）FileReaderオブジェクトの生成
+      var reader = new FileReader();
+
+      // （2）画像ファイルかテキスト・ファイルかを判定
+      if (!f.type.match('image.*') && !f.type.match('text.*')) {
+        alert("画像ファイルとテキスト・ファイル以外は表示できません。");
+        continue;
+      }
+
+      // （3）エラー発生時の処理
+      reader.onerror = function (evt) {
+        disp.innerHTML = "読み取り時にエラーが発生しました。";
+      }
+
+      // （4）画像ファイルの場合の処理
+      if (f.type.match('image.*')) {
+        // ファイル読取が完了した際に呼ばれる処理
+        reader.onload = function (evt) {
+          var li = document.createElement('li');
+          var img = document.createElement('img');
+          img.src = evt.target.result;
+          li.appendChild(img);
+          li.innerHTML += "<br />";
+          disp.appendChild(li);
+        }
+        // readAsDataURLメソッドでファイルの内容を取得
+        reader.readAsDataURL(f);
+      }
+
+      // （5）テキスト・ファイルの場合の処理
+      if (f.type.match('text.*')) {
+        // ファイル読取が完了した際に呼ばれる処理
+        reader.onload = function (evt) {
+          // FileReaderが取得したテキストをそのままdivタグに出力
+          disp.innerHTML = reader.result;
+        }
+        // readAsTextメソッドでファイルの内容を取得
+        reader.readAsText(f, 'shift-jis');
+      }
+    }
+  // （6）ブラウザ上でファイルを展開する挙動を抑止
+  event.preventDefault();
+  }
+
+  function onDragOver(event) {
+    // （6）ブラウザ上でファイルを展開する挙動を抑止
+    event.preventDefault();
+  }
+</script>
+
+  <body>
+<section id="main">
+  <p>ドラッグアンドドロップで1つから複数のファイルのプロパティを取得します。</p>
+  <div id="drop" style="width:700px; height:150px; padding:10px; border:3px solid" ondragover="onDragOver(event)" ondrop="onDrop(event)"  >ここにドロップしたファイルのプロパティを読み込みます。</div>
+  <p>ファイルプロパティ表示</p>
+  <div id="disp" ></div>
+</section>
+  </body>
+</html>

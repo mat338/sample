@@ -126,4 +126,13 @@ https://kb.tableau.com/articles/issue/tableau-server-port-exhaustion-problems?la
 
 トレーディング・ポスト（Trading Post）
 
+
+
+
+
+
+・React.js
 https://qiita.com/rgbkids/items/8ec309d1bf5e203d2b19
+
+・Drag and Drop API
+https://www.atmarkit.co.jp/ait/articles/1112/16/news135.html
