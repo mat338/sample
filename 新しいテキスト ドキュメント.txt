@@ -138,3 +138,9 @@ https://qiita.com/rgbkids/items/8ec309d1bf5e203d2b19
 https://www.atmarkit.co.jp/ait/articles/1112/16/news135.html
 
 http://www.it-view.net/drag-and-drop-file-upload-jquery-178.html
+
+・MySQL Workbenchでデータベースの差分を調べてを更新する方法
+https://tech.sanwasystem.com/entry/2016/03/31/130248
+
+・MySQLで、開発環境と本番環境を同期する一番簡単な方法
+https://fu-tara.com/dev000010/
